@@ -1,0 +1,22 @@
+body.single-lp_course {
+  .course-tab-panels {
+    ul {
+      margin-left: 0;
+    }
+  }
+
+  .comment-form {
+    [type="submit"] {
+      margin-top: 15px;
+      background-color: #2282c7;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      color: white;
+      transition: all 0.25s;
+      &:hover {
+        background-color: rgba(34, 130, 199, 0.85);
+      }
+    }
+  }
+}
