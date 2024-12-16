@@ -6,7 +6,6 @@ body.learnpress {
 
   .main-navigation {
     + .menu-element {
-      // display: none !important;
       visibility: hidden;
       pointer-events: none;
     }

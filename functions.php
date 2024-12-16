@@ -53,6 +53,26 @@ function child_theme_assets(): void
     );
   }
 
+  if (is_page("ingresar")) {
+    wp_enqueue_script(
+      'ingresar-script',
+      get_stylesheet_directory_uri() . '/assets/js/pages/ingresar.js',
+      array(),
+      filemtime(get_stylesheet_directory() . '/assets/js/pages/ingresar.js'),
+      true
+    );
+  }
+
+  if (is_page("registrar")) {
+    wp_enqueue_script(
+      'registrar-script',
+      get_stylesheet_directory_uri() . '/assets/js/pages/registrar.js',
+      array(),
+      filemtime(get_stylesheet_directory() . '/assets/js/pages/registrar.js'),
+      true
+    );
+  }
+
 }
 add_action('wp_enqueue_scripts', 'child_theme_assets', 999);
 
@@ -106,14 +126,54 @@ function cambiar_textos_learnpress($translated_text, $text, $domain)
   if ($translated_text === 'Leave Comment') {
     $translated_text = 'Dejar un comentario'; // Cambia este también si quieres
   }
-
   if ($translated_text === 'Your email address will not be published. Required fields are marked *') {
     $translated_text = 'Tu dirección de correo electrónico no será publicada. Los campos obligatorios están marcados con *'; // Cambia este también si quieres
   }
-
   if ($translated_text === 'Your comment...') {
     $translated_text = 'Tu comentario...';
+  }
+  // LearnPress Review del curso
+  if ($translated_text === 'Write a review') {
+    $translated_text = 'Escribe una reseña';
+  }
+  if ($translated_text === 'Reviews') {
+    $translated_text = 'Reseñas';
+  }
+  if ($translated_text === 'Title') {
+    $translated_text = 'Título';
+  }
+  if ($translated_text === 'Content') {
+    $translated_text = 'Contenido';
+  }
+  if ($translated_text === 'Add review') {
+    $translated_text = 'Añadir reseña';
+  }
+  if ($translated_text === 'Cancel') {
+    $translated_text = 'Cancelar';
+  }
+
+  if ($translated_text === 'Certificate') {
+    $translated_text = 'Certificado';
+  }
+  if ($translated_text === 'Certificates') {
+    $translated_text = 'Certificados';
   }
 
   return $translated_text;
 }
+
+
+// LearnPress
+// Si estamos logueados no podemos acceder a "registrar" asi que nos redirecciona
+add_action('template_redirect', 'redirect_logged_in_users_from_register');
+function redirect_logged_in_users_from_register()
+{
+  // Verifica si el usuario está en la página "registrar" y está logueado
+  if (is_page('registrar') && is_user_logged_in()) {
+    wp_safe_redirect(home_url('/perfil')); // Cambia '/perfil' si necesitas otra página
+    exit;
+  }
+}
+
+/* SHORTCODES */
+require_once get_stylesheet_directory() . '/shortcodes/index.php';

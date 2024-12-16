@@ -19,4 +19,38 @@ body.single-lp_course {
       }
     }
   }
+
+  button.lp-button.button-complete-lesson {
+    background-color: #2282c7;
+    color: #fff;
+    &:hover {
+      background-color: darken(#2282c7, 10%);
+    }
+  }
+
+  //
+  .course-item {
+    &.status-completed {
+      color: #155724;
+      background-color: #d4edda !important;
+      border-color: #c3e6cb;
+
+      .section-item-link {
+        &::before {
+          color: #155724;
+        }
+        &:hover {
+          .item-name {
+            color: #155724;
+          }
+        }
+      }
+    }
+  }
+
+  #content-item-quiz {
+    ol {
+      margin-bottom: 0;
+    }
+  }
 }
