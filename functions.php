@@ -73,6 +73,16 @@ function child_theme_assets(): void
     );
   }
 
+  if (is_page("perfil")) {
+    wp_enqueue_script(
+      'perfil-script',
+      get_stylesheet_directory_uri() . '/assets/js/pages/perfil.js',
+      array(),
+      filemtime(get_stylesheet_directory() . '/assets/js/pages/perfil.js'),
+      true
+    );
+  }
+
 }
 add_action('wp_enqueue_scripts', 'child_theme_assets', 999);
 
