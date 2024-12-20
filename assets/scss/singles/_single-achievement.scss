@@ -1,0 +1,44 @@
+body.single:has(.single-achievement-php) {
+  .social-share {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      column-gap: 12px;
+    }
+  }
+
+  .blog-content {
+    > .post-info {
+      display: none;
+    }
+  }
+
+  .gamipress-achievement-congratulations {
+    margin-bottom: 1em;
+    p {
+      margin-bottom: 0;
+      margin-left: 0.5rem;
+    }
+  }
+  .gamipress-achievement-earners-list {
+    a {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .entry-footer {
+    margin-top: 3rem;
+    margin-bottom: 40px;
+  }
+  .col-lg-7:has(.post-tags) {
+    display: none !important;
+  }
+  .author-bio {
+    display: none !important;
+  }
+}

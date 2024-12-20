@@ -7,4 +7,25 @@ body.page-id-perfil {
     // padding-top: 2rem;
     padding-bottom: 4rem;
   }
+
+  //
+  .lp-content-area {
+    .lp-profile-right {
+      align-self: center;
+      gap: 8px;
+    }
+  }
+
+  .points-php {
+    margin-bottom: 0 !important;
+  }
+  .gamipress-user-points-punto {
+    padding: 0 !important;
+  }
+
+  img.gamipress-points-thumbnail {
+    width: 24px;
+    margin-left: 5px;
+    margin-right: 3px;
+  }
 }

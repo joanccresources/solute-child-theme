@@ -7,6 +7,8 @@ if (!defined('ABSPATH'))
 // add_filter('use_block_editor_for_post', '__return_false', 10);
 function child_theme_assets(): void
 {
+  $puntos = do_shortcode('[gamipress_points type="punto"]');
+
   wp_enqueue_style(
     'font-awesome-5',
     'https://arguz.pe/wp-content/plugins/solute-elementor-extension/assets/fonts/FontAwesome/css/font-awesome.min.css',
@@ -41,6 +43,25 @@ function child_theme_assets(): void
     array('child-theme'), // Se carga después del tema hijo
     filemtime(get_stylesheet_directory() . '/assets/css/main.css')
   );
+
+  // En cada post evaluamos
+  if (is_single()) {
+    wp_enqueue_script(
+      'single-achievement-script',
+      get_stylesheet_directory_uri() . '/assets/js/singles/single-achievement.js',
+      array(),
+      filemtime(get_stylesheet_directory() . '/assets/js/singles/single-achievement.js'),
+      true
+    );
+    // 
+    // wp_localize_script(
+    //   'single-achievement-script',
+    //   'data',
+    //   array(
+    //     'puntos' => $puntos,
+    //   )
+    // );
+  }
 
   // En cada curso
   if (is_single("lp_course")) {
@@ -80,6 +101,14 @@ function child_theme_assets(): void
       array(),
       filemtime(get_stylesheet_directory() . '/assets/js/pages/perfil.js'),
       true
+    );
+
+    wp_localize_script(
+      'perfil-script',
+      'data',
+      array(
+        'puntos' => $puntos,
+      )
     );
   }
 
@@ -167,6 +196,9 @@ function cambiar_textos_learnpress($translated_text, $text, $domain)
   }
   if ($translated_text === 'Certificates') {
     $translated_text = 'Certificados';
+  }
+  if ($translated_text === "Your review has been submitted and is awaiting approve.") {
+    $translated_text = "Tu reseña ha sido enviada y está esperando aprobación.";
   }
 
   return $translated_text;
