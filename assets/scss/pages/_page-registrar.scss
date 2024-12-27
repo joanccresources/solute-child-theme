@@ -1,0 +1,11 @@
+body.page-id-registrar {
+  .nf-form-content {
+    padding: 0;
+  }
+  .box-form {
+    margin-block: 50px;
+    @media (max-width: 767px) {
+      margin-block: 30px;
+    }
+  }
+}

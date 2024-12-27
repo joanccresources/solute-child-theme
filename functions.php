@@ -5,6 +5,10 @@ if (!defined('ABSPATH'))
 
 /*** Editor clasico ***/
 // add_filter('use_block_editor_for_post', '__return_false', 10);
+/* INCLUDES */
+require_once get_stylesheet_directory() . '/includes/index.php';
+/* SHORTCODES */
+require_once get_stylesheet_directory() . '/shortcodes/index.php';
 function child_theme_assets(): void
 {
   $puntos = do_shortcode('[gamipress_points type="punto"]');
@@ -103,12 +107,33 @@ function child_theme_assets(): void
       true
     );
 
+    $args = array(
+      'puntos' => $puntos,
+    );
+
+    // Obtenemos la url completa
+    $current_url = $_SERVER['REQUEST_URI'];
+    // Obtiene solo el camino base, sin parámetros
+    $path = strtok($current_url, '?');
+    if (preg_match('#^/perfil/?$#', $path)) {
+      // Coincide si termina exactamente en "/perfil/" (con o sin barra final, sin parámetros)      
+      if (is_user_logged_in()) {
+        $user_id = get_current_user_id();
+        // El shortcode ya sanatiza el HTML(convierte a texto plano)
+        $achievements_html = do_shortcode('[gamipress_get_achievements user_id="' . $user_id . '"]');
+        $args["achievements_html"] = $achievements_html;
+      }
+    } else if (preg_match('#^/perfil/[^/]+/?$#', $path)) {
+      // Coincide con "/perfil/{algo}" donde {algo} es un nombre de usuario, sin barra final adicional ni parámetros
+      $achievements_html = do_shortcode('[gamipress_get_achievements_uri uri="' . $current_url . '"]');
+      $args["achievements_html"] = $achievements_html;
+    }
+
+
     wp_localize_script(
       'perfil-script',
       'data',
-      array(
-        'puntos' => $puntos,
-      )
+      $args
     );
   }
 
@@ -153,7 +178,6 @@ add_action('after_setup_theme', function (): void {
   if (!current_user_can('manage_options'))
     show_admin_bar(false);
 });
-
 
 
 add_filter('gettext', 'cambiar_textos_learnpress', 10, 3);
@@ -217,5 +241,3 @@ function redirect_logged_in_users_from_register()
   }
 }
 
-/* SHORTCODES */
-require_once get_stylesheet_directory() . '/shortcodes/index.php';

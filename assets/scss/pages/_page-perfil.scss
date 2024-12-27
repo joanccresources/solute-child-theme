@@ -28,4 +28,10 @@ body.page-id-perfil {
     margin-left: 5px;
     margin-right: 3px;
   }
+
+  .lp-content-area {
+    &:not(.lp-profile-content-area) {
+      flex-direction: column;
+    }
+  }
 }

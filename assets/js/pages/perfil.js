@@ -34,17 +34,19 @@
     const html = `
       <div class="alert alert-primary mb-0 mt-3">
         <p class="h5">Logros Obtenidos: </p>
-        <ul id="list-logros">
-        </ul>
+        <div id="list-logros"></div>
       </div>
     `;
     $profileHeader.insertAdjacentHTML("afterend", html);
+    $listLogros = document.querySelector("#list-logros");
+    $listLogros.innerHTML = data.achievements_html;
   };
 
   const initDomReady = () => {
     addTargetInCertificate();
     addPointsHtml();
     addAchievements();
+    console.log(data);
   };
   const initLoadReady = () => {
     addTargetInCertificate();
