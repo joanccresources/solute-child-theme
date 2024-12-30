@@ -65,8 +65,21 @@ function get_user_id_by_request_uri($request_uri)
   $uri_path = parse_url($request_uri, PHP_URL_PATH);
 
   // Extraer la última parte de la ruta.
+  // $path_parts = explode('/', trim($uri_path, '/'));
+
+  // Dividir la ruta en segmentos
   $path_parts = explode('/', trim($uri_path, '/'));
-  $user_login_url_encoded = end($path_parts);
+
+  // Verificar si "perfil" está en la URL y extraer el segmento siguiente
+  $perfil_index = array_search('perfil', $path_parts);
+
+  // Si no se encontró "perfil" o no hay segmento después, devolver null
+  if ($perfil_index === false || !isset($path_parts[$perfil_index + 1])) {
+    return null; // No se encontró "perfil" o no hay segmento después
+  }
+
+  // $user_login_url_encoded = end($path_parts);
+  $user_login_url_encoded = $path_parts[$perfil_index + 1];
 
   // Decodificar la parte URL-encoded (%20 a espacios, etc.).
   $user_login = urldecode($user_login_url_encoded);

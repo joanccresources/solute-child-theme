@@ -107,9 +107,11 @@ function child_theme_assets(): void
       true
     );
 
-    $args = array(
-      'puntos' => $puntos,
-    );
+    if (isset($puntos)) {
+      $args = array(
+        'puntos' => $puntos,
+      );
+    }
 
     // Obtenemos la url completa
     $current_url = $_SERVER['REQUEST_URI'];
@@ -123,7 +125,10 @@ function child_theme_assets(): void
         $achievements_html = do_shortcode('[gamipress_get_achievements user_id="' . $user_id . '"]');
         $args["achievements_html"] = $achievements_html;
       }
-    } else if (preg_match('#^/perfil/[^/]+/?$#', $path)) {
+    } else if (preg_match('#^/perfil/[^/]+/?#', $path)) {
+      // Coincide con "/perfil/{nombre_usuario}" y cualquier subruta como "/perfil/{nombre_usuario}/algo/..."
+
+      // } else if (preg_match('#^/perfil/[^/]+/?$#', $path)) {
       // Coincide con "/perfil/{algo}" donde {algo} es un nombre de usuario, sin barra final adicional ni parámetros
       $achievements_html = do_shortcode('[gamipress_get_achievements_uri uri="' . $current_url . '"]');
       $args["achievements_html"] = $achievements_html;
@@ -224,6 +229,8 @@ function cambiar_textos_learnpress($translated_text, $text, $domain)
   if ($translated_text === "Your review has been submitted and is awaiting approve.") {
     $translated_text = "Tu reseña ha sido enviada y está esperando aprobación.";
   }
+
+  // Woocommerce GamiPress
 
   return $translated_text;
 }

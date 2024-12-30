@@ -32,7 +32,7 @@ function shortcode_gamipress_get_achievements($atts)
 
   // Iniciar el contenedor HTML
   echo '<div class="gamipress-achievements-container">';
-  echo '<ul class="list-unstyled d-flex mb-0">'; // Lista
+  echo '<ul class="list-unstyled d-flex mb-0 flex-wrap justify-content-center justify-content-md-start ms-0 ms-md-5">'; // Lista
   foreach ($achievements as $index => $achievement) {
     echo '<li class="achievement-item' . ($index === 0 ? '' : ' ms-4') . '">';
     // Imagen destacada
@@ -73,8 +73,8 @@ function shortcode_gamipress_get_achievements_uri($atts)
     echo '<p>Error: Debes proporcionar una URL válida.</p>';
     return ob_get_clean();
   }
-
-  // Obtener los resultados  
+ 
+  // Obtener el id del usuario
   $user_id = get_user_id_by_request_uri($uri);
   if (empty($user_id)) {
     echo '<p>Error: Usuario no válido.-</p>';
@@ -92,7 +92,7 @@ function shortcode_gamipress_get_achievements_uri($atts)
 
   // Iniciar el contenedor HTML
   echo '<div class="gamipress-achievements-container">';
-  echo '<ul class="list-unstyled d-flex mb-0">'; // Lista
+  echo '<ul class="list-unstyled d-flex mb-0 flex-wrap justify-content-center justify-content-md-start ms-0 ms-md-5">'; // Lista
   foreach ($achievements as $index => $achievement) {
     echo '<li class="achievement-item' . ($index === 0 ? '' : ' ms-3') . '">';
     // Imagen destacada
