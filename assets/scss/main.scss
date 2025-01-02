@@ -12,6 +12,8 @@ body.learnpress {
   }
 }
 
+@import "header";
+
 // Pages
 @import "pages/index";
 
@@ -20,3 +22,6 @@ body.learnpress {
 
 // Cursos
 @import "cursos/index";
+
+// woocommerce
+@import "woocommerce/index";

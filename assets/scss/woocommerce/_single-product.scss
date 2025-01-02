@@ -1,0 +1,23 @@
+body.woo-slug-product {
+  // #sticky-header {
+  //   &.sticky-nav {
+  //     position: relative !important;
+  //   }
+  // }
+
+  #main {
+    padding-block: 50px;
+    @media (max-width: 767px) {
+      padding-block: 30px;
+    }
+  }
+  .woocommerce-breadcrumb {
+    display: none;
+  }
+
+  .woocommerce-product-gallery__image {
+    a {
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+body.woo-slug-product,
+body.page-id-perfil,
+body.page-id-ingresar,
+body.page-id-registrar,
+body.woo-slug-cart {
+  #sticky-header {
+    &.sticky-nav {
+      position: relative !important;
+    }
+  }
+}

@@ -23,11 +23,12 @@ function get_data_achievements($user_id)
   $query = $wpdb->prepare(
     "SELECT post_id 
     FROM `$table_name`
-    WHERE post_type NOT IN (%s, %s)
+    WHERE post_type NOT IN (%s, %s, %s)
     AND user_id = %d
     ORDER BY `date` DESC",
     'step', // Primer valor excluido
     'points-award', // Segundo valor excluido
+    'points-type', // Tercer valor excluido
     $user_id // Placeholder para user_id
   );
 

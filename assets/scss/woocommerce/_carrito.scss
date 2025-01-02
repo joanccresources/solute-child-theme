@@ -1,0 +1,17 @@
+body.woo-slug-cart {
+  .wc-block-cart__submit-container {
+    margin-top: 1rem;
+  }
+  .wc-block-cart__submit-button {
+    box-shadow: inset 0 0 0 1px #fff, 0 0 0 2px #0675c4;
+    outline: 3px solid transparent;
+    color: #2282c7;
+    transition: all 0.25s;
+    &:hover {
+      background: #2282c7;
+      color: white !important;
+    }
+  }
+
+  // margin-top: 1rem;
+}

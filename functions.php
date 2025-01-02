@@ -66,7 +66,6 @@ function child_theme_assets(): void
     //   )
     // );
   }
-
   // En cada curso
   if (is_single("lp_course")) {
     wp_enqueue_script(
@@ -142,6 +141,16 @@ function child_theme_assets(): void
     );
   }
 
+  if (is_checkout()) {
+    wp_enqueue_script(
+      'translate-checkout-script',
+      get_stylesheet_directory_uri() . '/assets/js/translate/translate-checkout.js',
+      array(),
+      filemtime(get_stylesheet_directory() . '/assets/js/translate/translate-checkout.js'),
+      true
+    );
+  }
+
 }
 add_action('wp_enqueue_scripts', 'child_theme_assets', 999);
 
@@ -167,12 +176,17 @@ function custom_body_class($classes)
     $classes[] = 'single-slug-all';
   if (is_category())
     $classes[] = 'category-slug-all';
-  // if (is_shop())
-  //   $classes[] = 'woo-slug-shop';
+
+  // Woocommerce
+  if (is_shop())
+    $classes[] = 'woo-slug-shop';
+  if (is_product())
+    $classes[] = 'woo-slug-product';
+  if (is_cart())
+    $classes[] = 'woo-slug-cart';
   // if (is_product_category())
-  //   $classes[] = 'woo-slug-product-category';
-  // if (is_product())
-  //   $classes[] = 'woo-slug-product';
+  //   $classes[] = 'woo-slug-product-category';  
+
   return $classes;
 }
 add_filter('body_class', 'custom_body_class');
@@ -231,6 +245,9 @@ function cambiar_textos_learnpress($translated_text, $text, $domain)
   }
 
   // Woocommerce GamiPress
+  if ($translated_text === 'Apply discount')
+    $translated_text = 'Aplicar descuento';
+
 
   return $translated_text;
 }
@@ -244,6 +261,18 @@ function redirect_logged_in_users_from_register()
   // Verifica si el usuario está en la página "registrar" y está logueado
   if (is_page('registrar') && is_user_logged_in()) {
     wp_safe_redirect(home_url('/perfil')); // Cambia '/perfil' si necesitas otra página
+    exit;
+  }
+
+  // Verifica si el usuario está en la página "ingresar" y está logueado
+  if (is_page('ingresar') && is_user_logged_in()) {
+    wp_safe_redirect(home_url('/perfil')); // Cambia '/perfil' si necesitas otra página
+    exit;
+  }
+
+  // Verifica si el usuario está en la página "perfil" y no está logueado
+  if (is_page('perfil') && !is_user_logged_in()) {
+    wp_safe_redirect(home_url('/ingresar')); // Cambia '/ingresar' si necesitas otra página
     exit;
   }
 }
