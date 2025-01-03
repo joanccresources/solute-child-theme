@@ -165,7 +165,8 @@ function custom_body_class($classes)
     'ingresar' => 'page-id-ingresar',
     'registrar' => 'page-id-registrar',
     'perfil' => 'page-id-perfil',
-    'cursos' => 'page-id-cursos'
+    'cursos' => 'page-id-cursos',
+    'mi-cuenta' => 'page-id-mi-cuenta'
   ];
   foreach ($page_classes as $slug => $class) {
     if (is_page($slug))
@@ -275,5 +276,10 @@ function redirect_logged_in_users_from_register()
     wp_safe_redirect(home_url('/ingresar')); // Cambia '/ingresar' si necesitas otra página
     exit;
   }
-}
 
+  // Verifica si el usuario está en la página "mi-cuenta" y no está logueado
+  if (is_page('mi-cuenta') && !is_user_logged_in()) {
+    wp_safe_redirect(home_url('/ingresar')); // Cambia '/ingresar' si necesitas otra página
+    exit;
+  }
+}
