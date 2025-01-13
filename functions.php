@@ -248,8 +248,16 @@ function cambiar_textos_learnpress($translated_text, $text, $domain)
   // Woocommerce GamiPress
   if ($translated_text === 'Apply discount')
     $translated_text = 'Aplicar descuento';
+  // 
+  if ($translated_text === 'Apply')
+    $translated_text = 'Aplicar';
+  if ($translated_text === 'Insufficient funds.')
+    $translated_text = 'Fondos insuficientes.';
 
-
+  if ($translated_text === 'Add to cart')
+    $translated_text = 'Añadir al carrito';
+  if ($translated_text === 'View cart')
+    $translated_text = 'Ver carrito';
   return $translated_text;
 }
 

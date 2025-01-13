@@ -34,4 +34,10 @@ body.page-id-perfil {
       flex-direction: column;
     }
   }
+
+  #profile-nav {
+    .quizzes {
+      display: none;
+    }
+  }
 }

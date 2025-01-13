@@ -18,17 +18,38 @@
   };
 
   const hideRepeatElements = () => {
-    const elements = document.querySelectorAll(
+    // const elements = document.querySelectorAll(
+    //   "#gamipress-wc-partial-payments"
+    // );
+    const elementSuccess = document.querySelectorAll(
       "#gamipress-wc-partial-payments"
     );
-    elements.forEach((element, i) => {
+    const elementErrors = document.querySelectorAll(
+      ".gamipress-wc-partial-payments-notices .woocommerce-error"
+    );
+    elementSuccess.forEach((element, i) => {
       if (i !== 0) element.classList.add("d-none");
+    });
+    elementErrors.forEach((element, i) => {
+      if (i !== 0) element.classList.add("d-none");
+    });
+  };
+
+  const handleFormSubmitPoints = () => {
+    const $form = document.querySelector(
+      "form.gamipress-wc-partial-payments-form"
+    );
+
+    if (!$form) return;
+    $form.addEventListener("submit", (e) => {
+      hideRepeatElements();      
     });
   };
 
   const initDomReady = () => {
     handleTranslate();
     hideRepeatElements();
+    handleFormSubmitPoints();
   };
 
   document.addEventListener("DOMContentLoaded", initDomReady);

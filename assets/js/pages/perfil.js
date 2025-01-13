@@ -26,6 +26,14 @@
       "afterbegin",
       `<span><b>Total de puntos:</b></span>`
     );
+
+    // Corregir los 101 puntos del inicio
+    const $userPoints = document.querySelector(
+      "#learn-press-profile .gamipress-user-points-punto .gamipress-user-points-amount"
+    );
+    if (!$userPoints) return;
+    const userPoints = $userPoints.innerHTML.trim();
+    $userPoints.innerHTML = Number(userPoints - 101);
   };
 
   const addAchievements = () => {
