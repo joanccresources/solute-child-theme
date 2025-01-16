@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="breadcrumb-area">
+<div class="breadcrumb-area joan123">
 	<div class="container">
 		<div class="title">			
 			<h1><?= get_the_title(); ?></h1>
