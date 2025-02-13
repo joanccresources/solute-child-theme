@@ -166,7 +166,8 @@ function custom_body_class($classes)
     'registrar' => 'page-id-registrar',
     'perfil' => 'page-id-perfil',
     'cursos' => 'page-id-cursos',
-    'mi-cuenta' => 'page-id-mi-cuenta'
+    'mi-cuenta' => 'page-id-mi-cuenta',
+    'academia-arguz' => 'page-id-academia-arguz'
   ];
   foreach ($page_classes as $slug => $class) {
     if (is_page($slug))

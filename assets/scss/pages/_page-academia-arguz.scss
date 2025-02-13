@@ -1,0 +1,21 @@
+body.page-id-academia-arguz {
+  // background-color: red;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // height: 100%;
+  // width: 240px;
+  .blog-list .post {
+    .post-thumbnail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 240px;
+      @media (max-width: 767px) {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
