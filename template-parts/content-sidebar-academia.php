@@ -1,4 +1,56 @@
 <aside id="secondary" class="widget-area">
+  <!-- <section id="block-2" class="widget widget_block widget_search">
+    <form role="search" method="get" action="https://arguz.pe/"
+      class="wp-block-search__button-outside wp-block-search__text-button wp-block-search">
+      <label class="wp-block-search__label" for="wp-block-search__input-1">Buscar</label>
+      <div class="wp-block-search__inside-wrapper ">
+        <input class="wp-block-search__input" id="wp-block-search__input-1" placeholder="" value="" type="search"
+          name="s" required="">
+        <button aria-label="Buscar" class="wp-block-search__button wp-element-button" type="submit">Buscar</button>
+      </div>
+    </form>
+  </section> -->
+  <section id="block-2" class="widget widget_block widget_search">
+    <form role="search" method="get" action="<?php echo home_url('/'); ?>"
+      class="wp-block-search__button-outside wp-block-search__text-button wp-block-search">
+      <label for="search-academia" class="wp-block-search__label">Buscar en Academia</label>
+      <div class="wp-block-search__inside-wrapper">
+        <input type="search" id="search-academia" class="wp-block-search__input" name="s" placeholder="Buscar..."
+          required>
+        <input type="hidden" name="post_type" value="academia_arguz">
+        <button type="submit" class="wp-block-search__button wp-element-button">Buscar</button>
+      </div>
+    </form>
+  </section>
+  <?php
+  $args = array(
+    'post_type' => 'academia_arguz',
+    'posts_per_page' => 4,
+    'post_status' => 'publish',
+  );
+
+  $query = new WP_Query($args); ?>
+  <?php if ($query->have_posts()): ?>
+    <section id="block-3" class="widget widget_block">
+      <div class="wp-block-group">
+        <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
+          <h2 class="wp-block-heading">Publicaciones recientes</h2>
+          <ul class="wp-block-latest-posts__list wp-block-latest-posts">
+            <?php while ($query->have_posts()): ?>
+              <?php $query->the_post(); ?>
+              <li>
+                <a class="wp-block-latest-posts__post-title" href="<?php the_permalink(); ?>">
+                  <?php the_title(); ?>
+                </a>
+              </li>
+            <?php endwhile; ?>
+          </ul>
+        </div>
+      </div>
+    </section>
+  <?php endif; ?>
+  <?php wp_reset_postdata(); ?>
+
   <?php
   $terms = get_terms(array(
     'taxonomy' => 'tipo_de_academia',
@@ -36,38 +88,4 @@
                   aria-label="Buscar" class="wp-block-search__button wp-element-button" type="submit">Buscar</button>
               </div>
             </form>
-          </section> -->
-<!-- <section id="block-3" class="widget widget_block">
-            <div class="wp-block-group">
-              <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
-                <h2 class="wp-block-heading">Publicaciones recientes</h2>
-
-                <ul class="wp-block-latest-posts__list wp-block-latest-posts">
-                  <li><a class="wp-block-latest-posts__post-title"
-                      href="https://arguz.pe/crece-con-arguz/empresa/4-claves-como-lider-para-fomentar-el-compromiso-laboral/">4
-                      claves como líder para fomentar el compromiso laboral</a></li>
-                  <li><a class="wp-block-latest-posts__post-title"
-                      href="https://arguz.pe/crece-con-arguz/salud-bienestar/los-4-imperios-interiores-transforma-tu-mundo-empezando-por-ti/">Los
-                      4 Imperios Interiores: Transforma tu mundo empezando por ti</a></li>
-                </ul>
-              </div>
-            </div>
-          </section> -->
-<!-- <section id="block-6" class="widget widget_block">
-            <div class="wp-block-group">
-              <div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
-                <h2 class="wp-block-heading">Categorías</h2>
-                <ul class="wp-block-categories-list wp-block-categories">
-                  <li class="cat-item cat-item-2">
-                    <a href="https://arguz.pe/crece-con-arguz/category/empresa/">Empresa</a>
-                  </li>
-                  <li class="cat-item cat-item-40">
-                    <a href="https://arguz.pe/crece-con-arguz/category/liderazgo/">Liderazgo</a>
-                  </li>
-                  <li class="cat-item cat-item-3">
-                    <a href="https://arguz.pe/crece-con-arguz/category/salud-bienestar/">Salud y Bienestar</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </section> -->

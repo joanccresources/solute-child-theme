@@ -374,3 +374,26 @@ function custom_ninja_forms_generate_id($form_data)
   return $form_data;
 }
 add_filter('ninja_forms_submit_data', 'custom_ninja_forms_generate_id');
+
+
+
+// Busqueda
+function filter_search_query($query)
+{
+  if ($query->is_search() && !is_admin() && isset($_GET['post_type']) && $_GET['post_type'] == 'academia_arguz') {
+    $query->set('post_type', 'academia_arguz');
+  }
+}
+add_action('pre_get_posts', 'filter_search_query');
+
+function custom_search_template($template)
+{
+  if (is_search() && get_query_var('post_type') === 'academia_arguz') {
+    $new_template = locate_template('search-academia_arguz.php');
+    if (!empty($new_template)) {
+      return $new_template;
+    }
+  }
+  return $template;
+}
+add_filter('template_include', 'custom_search_template');

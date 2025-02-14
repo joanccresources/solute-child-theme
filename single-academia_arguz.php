@@ -7,9 +7,9 @@
 			<?php
 			$terms = get_the_terms(get_the_ID(), 'tipo_de_academia');
 			if ($terms && !is_wp_error($terms)) {
-				echo '<p class="custom-taxonomy">Categoría: ';
+				echo '<p class="custom-taxonomy text-white">Categoría: ';
 				$term_links = array_map(function ($term) {
-					return '<a href="' . get_term_link($term) . '">' . esc_html($term->name) . '</a>';
+					return '<a href="' . get_term_link($term) . '" class="text-white text-decoration-underline">' . esc_html($term->name) . '</a>';
 				}, $terms);
 				echo implode(', ', $term_links) . '</p>';
 			}
