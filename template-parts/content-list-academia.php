@@ -32,15 +32,19 @@
             <i class="fa fa-eye"></i>
             <span><?= solute_get_post_view(); ?></span>
           </div>
-          <div class="meta-comment">
+          <div class="meta-comment d-none">
             <i class="bi bi-chat-left-text"></i>
             <a class="meta_comments" href="<?php comments_link(); ?>">
               <?php comments_number(esc_html__('0 Comments', 'solute'), esc_html__('1 Comment', 'solute'), esc_html__('% Comments', 'solute')); ?>
             </a>
           </div>
-          <div class="meta-date">
+          <div class="meta-date d-none">
             <i class="bi bi-calendar-date"></i>
             <span><?php echo get_the_time(get_option('date_format')); ?></span>
+          </div>
+          <div class="meta-date">
+            <i class="bi bi-calendar-date"></i>
+            <span>Última actualización: <?php echo get_the_modified_time(get_option('date_format')); ?></span>
           </div>
         </div>
       </div>

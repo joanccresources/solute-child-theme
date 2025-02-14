@@ -1,15 +1,4 @@
 <aside id="secondary" class="widget-area">
-  <!-- <section id="block-2" class="widget widget_block widget_search">
-    <form role="search" method="get" action="https://arguz.pe/"
-      class="wp-block-search__button-outside wp-block-search__text-button wp-block-search">
-      <label class="wp-block-search__label" for="wp-block-search__input-1">Buscar</label>
-      <div class="wp-block-search__inside-wrapper ">
-        <input class="wp-block-search__input" id="wp-block-search__input-1" placeholder="" value="" type="search"
-          name="s" required="">
-        <button aria-label="Buscar" class="wp-block-search__button wp-element-button" type="submit">Buscar</button>
-      </div>
-    </form>
-  </section> -->
   <section id="block-2" class="widget widget_block widget_search">
     <form role="search" method="get" action="<?php echo home_url('/'); ?>"
       class="wp-block-search__button-outside wp-block-search__text-button wp-block-search">

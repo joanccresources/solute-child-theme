@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="breadcrumb-area academia-arguz">
+<div class="breadcrumb-area breadcrumb-area--single-academia_arguz">
 	<div class="container">
 		<div class="title">
 			<h1><?= get_the_title(); ?></h1>

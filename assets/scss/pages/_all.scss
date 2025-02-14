@@ -1,0 +1,18 @@
+[class^="col-lg-"] {
+  > aside#secondary.widget-area {
+    @media (min-width: 992px) {
+      position: sticky;
+      top: 105px;
+      left: 0;
+    }
+  }
+}
+
+//
+.blog-details {
+  .entry-content {
+    ul {
+      margin-left: 0;
+    }
+  }
+}
