@@ -63,13 +63,24 @@
     <div class="entry-footer">
       <div class="row">
         <div class="col-lg-7">
-          <div class="post-tags">
+          <div class="post-tags d-none">
             <h5><?php echo esc_html__('Related Tags:', 'solute'); ?></h5>
             <?php
             $tags = wp_get_post_tags(get_the_ID());
             if ($tags) {
               foreach ($tags as $tag) {
                 echo '<a href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a> ';
+              }
+            }
+            ?>
+          </div>
+          <div class="post-tags">
+            <h5><?php echo esc_html__('Related Tags:', 'solute'); ?></h5>
+            <?php
+            $tags = get_the_terms(get_the_ID(), 'etiqueta_academia_arguz');
+            if ($tags && !is_wp_error($tags)) {
+              foreach ($tags as $tag) {
+                echo '<a href="' . get_term_link($tag) . '">' . esc_html($tag->name) . '</a> ';
               }
             }
             ?>
