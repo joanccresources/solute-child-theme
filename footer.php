@@ -8,7 +8,7 @@ global $solute_opt;
       <div class="row text-white py-5">
         <div class="col-md-4 mt-4 mt-md-0">
           <a href="https://arguz.pe/">
-            <img src="https://arguz.pe/wp-content/uploads/2024/07/arguz-logotipo-alterno-68.png" alt="Logo Footer" />            
+            <img src="<?=wp_get_upload_dir()['baseurl'];?>/2025/03/arguz-logotipo-alterno-68.webp" alt="Logo Footer" />
           </a>
           <p class="text-white" style="font-size: 14px;">Creemos firmemente que cada persona es una estrella que brilla con su propia luz y que, con ella, puede iluminar el camino de quienes la rodean.</p>
         </div>
@@ -39,7 +39,7 @@ global $solute_opt;
           <ul class="ms-0 mb-0">
             <li>
               <a href="https://arguz.pe/libro-de-reclamaciones/" class="d-flex align-items-center">
-                <img src="https://arguz.pe/wp-content/uploads/2025/02/libro-reclamacion.png"
+                <img src="https://arguz.pe/wp-content/uploads/2025/03/libro-reclamacion-arguz.webp"
                   alt="Libro de reclamaciones" width="50"/>
                 <span class="text-white">Libro de reclamaciones</span>
               </a>
