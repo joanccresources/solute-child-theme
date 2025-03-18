@@ -9,7 +9,7 @@ if (!defined('ABSPATH'))
 require_once get_stylesheet_directory() . '/includes/index.php';
 /* SHORTCODES */
 require_once get_stylesheet_directory() . '/shortcodes/index.php';
-function child_theme_assets(): void
+function child_theme_assets()
 {
   $puntos = do_shortcode('[gamipress_points type="punto"]');
 
@@ -28,7 +28,6 @@ function child_theme_assets(): void
       '4.2.7.3'// Versión del archivo
     );
   }
-
   wp_enqueue_style(
     'parent-theme',
     get_template_directory_uri() . '/style.css',
@@ -150,7 +149,6 @@ function child_theme_assets(): void
       true
     );
   }
-
 }
 add_action('wp_enqueue_scripts', 'child_theme_assets', 999);
 
